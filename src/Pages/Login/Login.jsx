@@ -2,6 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handelLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log({ email, password });
+  };
   return (
     <div className="hero bg-base-100">
       <div className="hero-content flex-col">
@@ -9,13 +16,14 @@ const Login = () => {
           <h1 className="text-5xl font-bold mb-4">Please Login now!</h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="card-body">
+          <form onSubmit={handelLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                name="email"
+                type="email"
                 placeholder="email"
                 className="input input-bordered"
               />
@@ -25,7 +33,8 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                name="password"
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
               />
@@ -41,10 +50,10 @@ const Login = () => {
             <div className="mt-6">
               <span>
                 Don't have any account?
-                <Link to="/register">Please Register</Link>
+                <Link to="/register"> Please Register</Link>
               </span>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
