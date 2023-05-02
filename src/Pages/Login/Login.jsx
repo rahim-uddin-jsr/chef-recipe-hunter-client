@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
@@ -12,6 +13,10 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    if (password.length <= 5) {
+      toast.error("Password must be at least 6 character");
+      return;
+    }
     loginWithEmailPassword(email, password)
       .then((result) => {
         toast.success("login successful");
@@ -55,6 +60,7 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                required
                 name="email"
                 type="email"
                 placeholder="email"
@@ -66,6 +72,7 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                required
                 name="password"
                 type="password"
                 placeholder="password"
@@ -95,13 +102,15 @@ const Login = () => {
                   onClick={handleGoogleSignIn}
                   className="btn  btn-primary w-1/2"
                 >
-                  Google SignIn
+                  <FaGoogle></FaGoogle>
+                  <span className="ml-2">Google SignIn</span>
                 </button>
                 <button
                   onClick={handleGithubSignIn}
                   className="btn btn-primary w-1/2"
                 >
-                  Github SignIn
+                  <FaGithub></FaGithub>
+                  <span className="ml-2">Github SignIn</span>
                 </button>
               </div>
             </div>

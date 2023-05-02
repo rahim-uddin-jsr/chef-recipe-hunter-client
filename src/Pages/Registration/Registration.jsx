@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Registration = () => {
   const { createUserWithEmail, updateUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
   const handelRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +15,12 @@ const Registration = () => {
     const photoUrl = form.photoUrl.value;
     const password = form.password.value;
     const infoForUpdate = { displayName: name, photoURL: photoUrl };
+
+    if (password.length <= 5) {
+      setError("Password must be at least 6 character");
+      return;
+    }
+    setError("");
     createUserWithEmail(email, password)
       .then((result) => {
         updateUser(infoForUpdate)
@@ -84,6 +92,7 @@ const Registration = () => {
                 className="input input-bordered"
               />
             </div>
+            {error && <span className="text-red-300">{error}</span>}
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>

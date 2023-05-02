@@ -11,7 +11,7 @@ const NavigationBar = () => {
     });
   };
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-300">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -90,17 +90,41 @@ const NavigationBar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <>
-            <button onClick={handleLogOut} className="btn mr-5">
-              Logout
-            </button>
-            <div className="avatar tooltip" data-tip={user.displayName}>
-              <div className="w-12 rounded-full ring">
+          <div
+            className="dropdown dropdown-end tooltip tooltip-left"
+            data-tip={user.displayName}
+          >
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
+              <div className="w-10 rounded-full ">
                 <img src={user.photoURL} />
               </div>
-            </div>
-          </>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between">Profile</a>
+              </li>
+              <li>
+                <a onClick={handleLogOut}>Logout</a>
+              </li>
+            </ul>
+          </div>
         ) : (
+          // <ul className="menu menu-horizontal px-1">
+          //   <li onClick={handleLogOut} className="btn mr-5">
+          //     Logout
+          //   </li>
+          //   <div>
+          //     <div
+          //       className="w-12 rounded-full ring avatar tooltip"
+          //       data-tip={user.displayName}
+          //     >
+          //       <img src={user.photoURL} />
+          //     </div>
+          //   </div>
+          // </ul>
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
