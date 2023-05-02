@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Registration = () => {
-  const { createUserWithEmail } = useContext(AuthContext);
+  const { createUserWithEmail, updateUser } = useContext(AuthContext);
   const handelRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,10 +12,16 @@ const Registration = () => {
     const email = form.email.value;
     const photoUrl = form.photoUrl.value;
     const password = form.password.value;
-
+    const infoForUpdate = { displayName: name, photoURL: photoUrl };
     createUserWithEmail(email, password)
       .then((result) => {
-        
+        updateUser(infoForUpdate)
+          .then(() => {
+            toast.success("updated");
+          })
+          .catch((error) => {
+            toast.error(error.message);
+          });
         toast.success("user created successfully");
       })
       .catch((err) => {
@@ -26,7 +32,7 @@ const Registration = () => {
     <div className="hero bg-base-100">
       <div className="hero-content flex-col">
         <div className="text-center">
-          <h1 className="text-5xl font-bold mb-4">Please Login now!</h1>
+          <h1 className="text-5xl font-bold mb-4">Please Register</h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handelRegister} className="card-body">
@@ -35,6 +41,7 @@ const Registration = () => {
                 <span className="label-text">Full Name</span>
               </label>
               <input
+                required
                 name="fullName"
                 type="text"
                 placeholder="Full Name"
@@ -46,6 +53,7 @@ const Registration = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                required
                 name="email"
                 type="email"
                 placeholder="email"
@@ -57,6 +65,7 @@ const Registration = () => {
                 <span className="label-text">Photo Url</span>
               </label>
               <input
+                required
                 name="photoUrl"
                 type="url"
                 placeholder="Photo Url"
@@ -68,6 +77,7 @@ const Registration = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
+                required
                 name="password"
                 type="password"
                 placeholder="password"
