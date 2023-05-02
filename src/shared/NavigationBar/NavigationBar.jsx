@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const NavigationBar = () => {
+  const { LogOut, user } = useContext(AuthContext);
+  const handleLogOut = () => {
+    LogOut().then(() => {
+      toast.success("logout successFull");
+    });
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -81,11 +89,31 @@ const NavigationBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="avatar tooltip" data-tip="Hello">
-          <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          </div>
-        </div>
+        {user ? (
+          <>
+            <button onClick={handleLogOut} className="btn">
+              Logout
+            </button>
+            <div className="avatar tooltip" data-tip="Hello">
+              <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "active" : ""
+                }
+                to="/login"
+              >
+                Login
+              </NavLink>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );

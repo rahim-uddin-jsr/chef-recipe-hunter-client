@@ -15,8 +15,8 @@ const Registration = () => {
 
     createUserWithEmail(email, password)
       .then((result) => {
+        
         toast.success("user created successfully");
-        console.log(result.user);
       })
       .catch((err) => {
         toast.error(err.message);
