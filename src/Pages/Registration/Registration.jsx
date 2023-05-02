@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Registration = () => {
+  const { createUserWithEmail } = useContext(AuthContext);
   const handelRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -9,7 +12,15 @@ const Registration = () => {
     const email = form.email.value;
     const photoUrl = form.photoUrl.value;
     const password = form.password.value;
-    console.log({ email, password });
+
+    createUserWithEmail(email, password)
+      .then((result) => {
+        toast.success("user created successfully");
+        console.log(result.user);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
   return (
     <div className="hero bg-base-100">
