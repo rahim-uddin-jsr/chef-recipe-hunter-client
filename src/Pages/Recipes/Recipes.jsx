@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import RecipeBanner from "./RecipeBanner/RecipeBanner";
 
 const Recipes = () => {
   const recipes = useLoaderData();
@@ -10,9 +11,9 @@ const Recipes = () => {
   const chef = chefsData.find((chef) => chef.name == recipes[0].strChefName);
   console.log(chef);
   return (
-    <div>
-      <h2>My recipes</h2>
-    </div>
+    <>
+      <RecipeBanner chef={chef} />
+    </>
   );
 };
 

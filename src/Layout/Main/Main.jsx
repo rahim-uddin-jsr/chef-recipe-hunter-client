@@ -5,12 +5,14 @@ import NavigationBar from "../../shared/NavigationBar/NavigationBar";
 
 const Main = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex h-screen flex-col">
       <NavigationBar />
       <div className="my-auto">
         <Outlet></Outlet>
       </div>
-      <Footer />
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 };
