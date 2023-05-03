@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import React from "react";
 import Banner from "../Banner/Banner";
+import ChefSection from "../ChefSection/ChefSection";
 const Home = () => {
-  const { displayName } = useContext(AuthContext);
   return (
     <div>
       <Banner></Banner>
+      <ChefSection />
     </div>
   );
 };
