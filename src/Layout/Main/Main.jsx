@@ -5,7 +5,7 @@ import NavigationBar from "../../shared/NavigationBar/NavigationBar";
 
 const Main = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col">
       <NavigationBar />
       <div className="my-auto">
         <Outlet></Outlet>
