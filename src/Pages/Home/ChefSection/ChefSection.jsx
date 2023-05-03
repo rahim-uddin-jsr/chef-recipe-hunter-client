@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import Chef from "../chef/chef";
 
 const ChefSection = () => {
-  const [chefsData, setChefsData] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/chefs")
-      .then((res) => res.json())
-      .then((data) => setChefsData(data));
-  }, []);
+  //   const [chefsData, setChefsData] = useState([]);
+  //   useEffect(() => {
+  //     fetch("http://localhost:5000/chefs")
+  //       .then((res) => res.json())
+  //       .then((data) => setChefsData(data));
+  //   }, []);
+  const { chefsData } = useContext(AuthContext);
   return (
     <div
       className="mt-12"

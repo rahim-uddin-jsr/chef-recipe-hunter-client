@@ -15,6 +15,13 @@ import app from "../../firebase/firebase.config";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const [chefsData, setChefsData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/chefs")
+      .then((res) => res.json())
+      .then((data) => setChefsData(data));
+  }, []);
+
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const [user, setUser] = useState(null);
@@ -59,6 +66,7 @@ const AuthProvider = ({ children }) => {
     isLoading,
     googleSignIn,
     githubSignIn,
+    chefsData,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
