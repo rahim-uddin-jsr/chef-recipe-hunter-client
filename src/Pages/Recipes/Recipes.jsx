@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import ChefRecipes from "./ChefRecipes/ChefRecipes";
 import RecipeBanner from "./RecipeBanner/RecipeBanner";
 
 const Recipes = () => {
@@ -13,6 +14,7 @@ const Recipes = () => {
   return (
     <>
       <RecipeBanner chef={chef} />
+      <ChefRecipes recipes={recipes} />
     </>
   );
 };
