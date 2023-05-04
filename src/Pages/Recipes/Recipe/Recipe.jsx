@@ -13,7 +13,6 @@ const Recipe = ({ recipe }) => {
   const handleFavorite = (id) => {
     toast.success("Successfully added to favorite");
     setIsFavorite(true);
-    console.log(id);
   };
   const keysOfRecipe = Object.keys(recipe);
 
@@ -25,11 +24,10 @@ const Recipe = ({ recipe }) => {
   keysOfRecipe.map(
     (keys) => keys.includes("strMeasure") && measures.push(keys)
   );
-  console.log(ingredients);
   return (
     <div className="card md:w-96 w-[250px] bg-base-100 shadow-xl">
       <figure>
-        <LazyLoad  >
+        <LazyLoad>
           <img src={strMealThumb} alt="Shoes" />
         </LazyLoad>
       </figure>
