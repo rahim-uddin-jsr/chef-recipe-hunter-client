@@ -3,6 +3,7 @@ import "@smastrom/react-rating/style.css";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaHeart } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 
 const Recipe = ({ recipe }) => {
   const [readMore, setReadMore] = useState(false);
@@ -28,7 +29,9 @@ const Recipe = ({ recipe }) => {
   return (
     <div className="card md:w-96 w-[250px] bg-base-100 shadow-xl">
       <figure>
-        <img src={strMealThumb} alt="Shoes" />
+        <LazyLoad  >
+          <img src={strMealThumb} alt="Shoes" />
+        </LazyLoad>
       </figure>
       <div className="card-body flex flex-col">
         <h2 className="card-title">{strMeal}</h2>

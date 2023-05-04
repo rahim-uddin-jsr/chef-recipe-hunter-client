@@ -25,7 +25,9 @@ const router = createBrowserRouter([
         path: "/recipes/:chefName",
         element: <PrivateRoute children={<Recipes />}></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/recipes/${params.chefName}`),
+          fetch(
+            `https://foodie-crush-server-dev-rahim.vercel.app/recipes/${params.chefName}`
+          ),
       },
     ],
   },

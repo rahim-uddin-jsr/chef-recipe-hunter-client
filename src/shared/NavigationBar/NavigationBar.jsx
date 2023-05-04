@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import LazyLoad from "react-lazy-load";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
@@ -96,7 +97,9 @@ const NavigationBar = () => {
           >
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
               <div className="w-10 rounded-full ">
-                <img src={user.photoURL} />
+                <LazyLoad>
+                  <img src={user.photoURL} />
+                </LazyLoad>
               </div>
             </label>
             <ul

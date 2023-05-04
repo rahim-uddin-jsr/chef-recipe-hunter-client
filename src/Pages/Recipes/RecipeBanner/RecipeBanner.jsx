@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBookOpen, FaBriefcase, FaHeart } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 
 const RecipeBanner = ({ chef }) => {
   const { id, picture, description, name, recipeCount, likes, experience } =
@@ -14,7 +15,12 @@ const RecipeBanner = ({ chef }) => {
       }}
     >
       <div className="hero-content md:px-12 sm:px-0  flex-col lg:flex-row-reverse">
-        <img src={picture} className="max-w-sm w-full rounded-lg shadow-2xl" />
+        <LazyLoad>
+          <img
+            src={picture}
+            className="max-w-sm w-full rounded-lg shadow-2xl"
+          />
+        </LazyLoad>
         <div>
           <h1 className="text-5xl font-bold">{name}</h1>
           <div className="card-body md:px-12 sm:px-0">

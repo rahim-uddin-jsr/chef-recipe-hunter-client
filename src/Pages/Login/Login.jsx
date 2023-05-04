@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.form?.pathname || "/";
   const { loginWithEmailPassword, googleSignIn, githubSignIn } =
     useContext(AuthContext);
   const handelLogin = (e) => {
@@ -20,8 +22,7 @@ const Login = () => {
     loginWithEmailPassword(email, password)
       .then((result) => {
         toast.success("login successful");
-        console.log(result.user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         toast.error(err.message);
@@ -31,6 +32,7 @@ const Login = () => {
     googleSignIn()
       .then(() => {
         toast.success("Google login Success");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -41,6 +43,7 @@ const Login = () => {
     githubSignIn()
       .then(() => {
         toast.success("Github login Success");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;

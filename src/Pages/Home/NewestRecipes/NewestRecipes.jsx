@@ -5,7 +5,7 @@ const NewestRecipes = () => {
   const [showAll, setShowAll] = useState(false);
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/recipes")
+    fetch("https://foodie-crush-server-dev-rahim.vercel.app/recipes")
       .then((res) => res.json())
       .then((data) => setRecipes(data));
   }, []);

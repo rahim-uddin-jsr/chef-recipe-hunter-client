@@ -5,7 +5,7 @@ import Chef from "../chef/chef";
 const ChefSection = () => {
   //   const [chefsData, setChefsData] = useState([]);
   //   useEffect(() => {
-  //     fetch("http://localhost:5000/chefs")
+  //     fetch("https://foodie-crush-server-dev-rahim.vercel.app/chefs")
   //       .then((res) => res.json())
   //       .then((data) => setChefsData(data));
   //   }, []);
