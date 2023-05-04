@@ -5,11 +5,15 @@ import { Link } from "react-router-dom";
 const Chef = ({ chef }) => {
   const { id, picture, name, recipeCount, likes, experience } = chef;
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact md:w-96 bg-base-100 shadow-xl">
       <figure className="h-[350px]">
-        <img loading="lazy" className="w-full h-full" src={picture} />
+        <img
+          loading="lazy"
+          className="md:w-full w-[250px] h-full"
+          src={picture}
+        />
       </figure>
-      <div className="card-body border">
+      <div className="card-body">
         <h2 className="card-title mx-auto">{name}</h2>
         <div className="flex justify-evenly">
           <span>Experience: {experience} years</span>

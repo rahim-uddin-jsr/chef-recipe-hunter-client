@@ -26,7 +26,7 @@ const Recipe = ({ recipe }) => {
   );
   console.log(ingredients);
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card md:w-96 w-[250px] bg-base-100 shadow-xl">
       <figure>
         <img src={strMealThumb} alt="Shoes" />
       </figure>
