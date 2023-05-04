@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 
 const Subscribe = () => {
   return (
-    <div className="hero min-h-screen bg-base-500">
+    <div className="hero md:px-12 sm:px-0 min-h-screen bg-base-500">
       <div className="hero-content flex-col">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold text-center">Subscribe now!</h1>
@@ -18,7 +18,7 @@ const Subscribe = () => {
           }}
           className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
         >
-          <div className="card-body">
+          <div className="card-body p-4 md:p-8">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Full Name</span>
