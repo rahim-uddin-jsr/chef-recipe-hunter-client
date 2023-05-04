@@ -115,19 +115,6 @@ const NavigationBar = () => {
             </ul>
           </div>
         ) : (
-          // <ul className="menu menu-horizontal px-1">
-          //   <li onClick={handleLogOut} className="btn mr-5">
-          //     Logout
-          //   </li>
-          //   <div>
-          //     <div
-          //       className="w-12 rounded-full ring avatar tooltip"
-          //       data-tip={user.displayName}
-          //     >
-          //       <img src={user.photoURL} />
-          //     </div>
-          //   </div>
-          // </ul>
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
